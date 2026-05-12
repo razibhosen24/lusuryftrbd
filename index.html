@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Footwear | Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Section --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            /* জুতার ব্র্যান্ডের সাথে মানানসই একটি ব্যাকগ্রাউন্ড ইমেজ */
+            background: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ডার্ক ওভারলে টেক্সট স্পষ্ট করার জন্য */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(181,25,32,0.5) 100%);
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* লোগো স্টাইল */
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #b51920; /* ব্র্যান্ড কালার */
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 span {
+            color: #b51920;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        /* কাউন্টডাউন টাইমার স্টাইল */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 25px;
+            border-radius: 15px;
+            min-width: 110px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 5px solid #b51920;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .time-box span {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            color: #fff;
+        }
+
+        .time-box p {
+            margin: 0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b51920;
+            font-weight: bold;
+        }
+
+        /* ইমেইল সাবস্ক্রিপশন */
+        .notify-me {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input {
+            padding: 15px 25px;
+            border-radius: 30px 0 0 30px;
+            border: none;
+            width: 300px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 15px 35px;
+            border-radius: 0 30px 30px 0;
+            border: none;
+            background: #b51920;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        button:hover {
+            background: #fff;
+            color: #b51920;
+        }
+
+        /* অ্যানিমেশন */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* মোবাইল রেসপন্সিভ */
+        @media (max-width: 768px) {
+            h2 { font-size: 1.8rem; }
+            .countdown { gap: 10px; flex-wrap: wrap; }
+            .time-box { min-width: 80px; padding: 15px; }
+            .time-box span { font-size: 1.8rem; }
+            .notify-me { flex-direction: column; gap: 15px; }
+            input { border-radius: 30px; width: 100%; }
+            button { border-radius: 30px; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span>L</span>uxury Footwear
+            </div>
+        </header>
+
+        <main>
+            <h2 class="animate-text">New Style <span>Coming Soon</span></h2>
+            <p>আমাদের আধুনিক এবং ইউনিক ডিজাইনের কালেকশন নিয়ে খুব শীঘ্রই আসছি।</p>
+
+            <div class="countdown" id="timer">
+                <div class="time-box">
+                    <span id="days">10</span>
+                    <p>Days</p>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <p>Hours</p>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <p>Mins</p>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <p>Secs</p>
+                </div>
+            </div>
+
+            <div class="notify-me">
+                <input type="email" placeholder="আপনার ইমেইল দিন...">
+                <button>নোটিফিকেশন পান</button>
+            </div>
+        </main>
+
+        <footer style="margin-top: 50px; font-size: 0.8rem; opacity: 0.6;">
+            <p>&copy; 2026 Luxury Footwear. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        /* --- JavaScript Section --- */
+        
+        // ১০ দিনের কাউন্টডাউন সেট করা (বর্তমান সময় থেকে ১০ দিন)
+        const countdownDate = new Date();
+        countdownDate.setDate(countdownDate.getDate() + 10);
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            // দিন, ঘন্টা, মিনিট এবং সেকেন্ড হিসাব
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // রেজাল্ট দেখানো
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            // সময় শেষ হলে যা হবে
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "<h2 style='color:#fff'>WE ARE LIVE!</h2>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
